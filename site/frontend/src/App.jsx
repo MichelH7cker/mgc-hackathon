@@ -11,7 +11,7 @@ function App() {
 
     return (
         <>
-            <div className='flex w-full h-screen bg-gradient-to-r from-mg-purple to-mg-dark-blue'>
+            <div className="relative flex w-full h-screen bg-gradient-to-r from-fuchsia-500 to-cyan-500">
                 <div className='w-1/2 flex flex-col items-start justify-center p-16 gap-20'>
 					<div className= "gap-10">
 						<h1 className="text-8xl font-bold mb-4 relative z-10 font-poppins text-white "> MagaBot </h1>

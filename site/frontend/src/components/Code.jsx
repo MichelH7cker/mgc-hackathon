@@ -65,37 +65,41 @@ resource "mgc_virtual_machine_instances" "nexgen-back" {
     const [copy, setCopy] = useState(false)
 
     return (
-        <div className='h-screen bg-gray-500 flex justify-center'>
-            <div className='w-1/2 bg-[#3a404d] rounded-md overflow-hidden flex  overflow-y-auto m-5 mb-44'>
-                <div className='flex justify-between px-4 text-white text-xs items-center flex-col w-full'>
-                    <div className='flex w-full justify-between text-center items-center'>
-                        <p className='text-sm text-right'>Terraform code</p>
-                        {copy ? (
-                            <button className='py-1 inline-flex items-center gap-1 text-left'>
+        <div className='h-full bg-gradient-to-r p-4 from-mg-purple to-mg-dark-blue flex justify-center'>
+            <div className='w-1/2 h-full m-20 bg-gray-300 rounded-md'>
+                <div className='w-full h-full bg-gray-300 rounded-md overflow-hidden'>
+                    <div className='flex justify-between px-4 text-white text-xs items-center flex-col w-full'>
+                        <div className='flex w-full justify-between text-center items-center'>
+                            <p className='text-sm text-right text-black'>Terraform code</p>
+                            {copy ? (
+                                <button className='py-1 inline-flex items-center gap-1 text-left'>
+                                    <span className='text-base mt-1'>
+                                        <ion-icon name="checkmark-sharp"></ion-icon>
+                                    </span>
+                                    Copied!
+                                </button>
+                            ) : (
+                                <button className='text-black py-1 inline-flex items-center gap-1' onClick={() => {
+                                    navigator.clipboard.writeText(code);
+                                    setCopy(true)
+                                    setTimeout(() => {
+                                        setCopy(false)
+                                    }, 3000)
+                                }}>
                                 <span className='text-base mt-1'>
-                                    <ion-icon name="checkmark-sharp"></ion-icon>
+                                    <ion-icon name="clipboard-outline"></ion-icon>
                                 </span>
-                                Copied!
+                                Copy code
                             </button>
-                        ) : (
-                            <button className='py-1 inline-flex items-center gap-1' onClick={() => {
-                                navigator.clipboard.writeText(code);
-                                setCopy(true)
-                                setTimeout(() => {
-                                    setCopy(false)
-                                }, 3000)
-                            }}>
-                            <span className='text-base mt-1'>
-                                <ion-icon name="clipboard-outline"></ion-icon>
-                            </span>
-                            Copy code
-                        </button>
-                        )}
+                            )}
+                        </div>
+                    <SyntaxHighlighter language="terraform" style={atomOneDark} customStyle={{padding: "25px", width: "100%"}}>
+                        {code}
+                    </SyntaxHighlighter>
                     </div>
-                <SyntaxHighlighter language="terraform" style={atomOneDark} customStyle={{padding: "25px", width: "100%"}}>
-                    {code}
-                </SyntaxHighlighter>
-                <div className='bg-green-500 w-full h-10'>sdkbvcsdhivbdshibvdsjovbdskvbjisdvbjdsv</div>
+                </div>
+                <div className='w-full m-6 flex justify-center items-center'>
+                    <button className='bg-gradient-to-r from-mg-purple to-mg-dark-blue justify-center items-center w-1/3 h-10 rounded-md font-jetbrains text-white'> baixar </button> 
                 </div>
             </div>
         </div>
