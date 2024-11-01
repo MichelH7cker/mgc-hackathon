@@ -4,42 +4,10 @@ import { v4 as uuidv4 } from 'uuid';
 
 import "./assets/tailwind.css"
 
-import Bololo from './components/Bololo'
+import Configuracoes from './components/Configuracoes'
+import Code from './components/Code'
 
 function App() {
-
-    const [origin, setOrigin] = useState('')
-    const [destination, setDestination] = useState('')
-    const [option, setOption] = useState() // 'g1', 'g2', 'g3', 'g4'
-
-    const [status, setStatus] = useState('idle') // 'idle', 'loading', 'error', 'ready'
-    const [response, setResponse] = useState([])
-
-    const handleClick = () => {
-        console.log(origin)
-        console.log(destination)
-        console.log(option)
-
-        setStatus('loading')
-        const searchBaseURL = `http://127.0.0.1:5000/${option}?s1=${origin}&s2=${destination}`
-        axios
-            .get(searchBaseURL)
-            .then((res) => {
-                console.log(res, "Response fetched in app")
-                setResponse(res.data)
-                setStatus('ready')
-            })
-            .catch((error) => {
-                console.log("Erro fetch full criterio: " + error);
-                setStatus('error')
-            })
-    }
-
-    const handleOption = (e) => {
-        setOption(e.target.value)
-        setStatus('idle')
-    }
-
 
     return (
         <>
@@ -58,7 +26,8 @@ function App() {
                      </div>
                 </div>
             </div>
-            <Bololo />
+            <Configuracoes />
+            <Code />
 		</>
     )
 }
