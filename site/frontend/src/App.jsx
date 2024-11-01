@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import "./assets/tailwind.css"
 
-import Stations from './components/Stations'
+import Bololo from './components/Bololo'
 
 function App() {
 
@@ -58,6 +58,7 @@ function App() {
                      </div>
                 </div>
             </div>
+            <Bololo />
 		</>
     )
 }
