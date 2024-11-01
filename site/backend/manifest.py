@@ -11,7 +11,7 @@ load_dotenv()
 os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
 
 class Manifest:
-    def __init__(self, llm_model="gpt-4o", temperature=0, max_retries=2):
+    def __init__(self, llm_model="gpt-4o", temperature=0.25, max_retries=2):
         self.tool = TXTSearchTool(txt='documentacao.txt')
         self.model = ChatOpenAI(model=llm_model, temperature=temperature, max_retries=max_retries)
 
@@ -81,6 +81,7 @@ class Manifest:
                 Preze sempre pela segurança.  
                 O nome do provedor cloud é **exclusivamente** `mgc_virtual_machine_instances`, e **não** deve ser trocado ou alterado em nenhuma situação.  
                 **Não utilize outros nomes para o provedor, como 'magali_cloud', que são incorretos.**
+                **GERE SOMENTE O CÓDIGO TERRAFORM, NÃO ESCREVA NADA ALÉM DISSO.**
                 Segue um exemplo de arquivo Terraform, utilize-o de base, modificando as configurações conforme necessidade do que foi pedido:
                 {TF_EXAMPLE}
             """,
@@ -139,6 +140,7 @@ class Manifest:
                 O nome do provedor cloud é **exatamente** `"mgc_virtual_machine"`, e deve ser referenciado como `provider = "mgc_virtual_machine"` no arquivo.  
                 **Não utilize qualquer outro nome para o provedor.**  
                 Certifique-se de que a configuração contenha todas as informações necessárias para o provisionamento, mantendo o equilíbrio entre otimização, escalabilidade e segurança.
+                Contenha APENAS o código Terraform, nada mais.
                 """,
             context=task_context
         )
