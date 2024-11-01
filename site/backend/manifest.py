@@ -3,7 +3,7 @@ from crewai import Agent, Task, Crew, Process
 from langchain_openai import ChatOpenAI
 import pandas as pd
 import os
-from example import TF_EXAMPLE
+from example import TF_EXAMPLE, TF_EXAMPLE_VM, TF_EXAMPLE_KUBERNETS
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -11,7 +11,7 @@ load_dotenv()
 os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
 
 class Manifest:
-    def __init__(self, llm_model="gpt-4o", temperature=0.25, max_retries=2):
+    def __init__(self, llm_model="gpt-4o", temperature=0, max_retries=2):
         self.tool = TXTSearchTool(txt='documentacao.txt')
         self.model = ChatOpenAI(model=llm_model, temperature=temperature, max_retries=max_retries)
 
@@ -48,7 +48,7 @@ class Manifest:
             """,
             verbose = False,
             max_iter = 10,
-            memory = True,
+            memory = False,
             allow_delegation = False
         )
 
@@ -62,7 +62,7 @@ class Manifest:
                             Sua experiência é de receber uma mensagem e buscar no arquivo a melhor parte que se relaciona com isso.""",
             verbose = False,
             max_iter = 10,
-            memory = True,
+            memory = False,
             tools = [self.tool],
             allow_delegation = False
         )
@@ -81,35 +81,20 @@ class Manifest:
                 Preze sempre pela segurança.  
                 O nome do provedor cloud é **exclusivamente** `mgc_virtual_machine_instances`, e **não** deve ser trocado ou alterado em nenhuma situação.  
                 **Não utilize outros nomes para o provedor, como 'magali_cloud', que são incorretos.**
-                **GERE SOMENTE O CÓDIGO TERRAFORM, NÃO ESCREVA NADA ALÉM DISSO.**
-                Segue um exemplo de arquivo Terraform, utilize-o de base, modificando as configurações conforme necessidade do que foi pedido:
-                {TF_EXAMPLE}
+                Escreva APENAS código Terraform.
+                Seguem exemplos de arquivos Terraform, utilize-os de base, modificando as configurações conforme necessidade do que foi pedido:
+                {TF_EXAMPLE} \n
+                {TF_EXAMPLE_VM} \n
+                {TF_EXAMPLE_KUBERNETS}
             """,
             verbose = False,
             max_iter = 10,
-            memory = True,
+            memory = False,
             allow_delegation = False
         )
 
         return write_agent
     
-    def __create_html_transcriptor_agent(self) -> Agent:
-        html_transcriptor_agent = Agent(
-            role = "Transcrever Markdown em HTML",
-            goal = f"""Transcreva um texto Markdown para HTML.""",
-            backstory = """
-                Você é um especialista em textos markdown e um códigos HTML.
-                Sua especialidade é passar um texto em Markdown para um código HTML.
-                Gere apenas a seção <body> do código sem incluir a tag <body>.  
-            """,
-            verbose = False,
-            max_iter = 10,
-            memory = True,
-            allow_delegation = False
-        )
-
-        return html_transcriptor_agent
-
     def __create_rag_question_task(self, agent, message) -> Task:
         rag_question = Task(
             description=f"""
@@ -136,11 +121,12 @@ class Manifest:
             description=f"A partir das informações recuperadas pelo 'rag task' para a mensagem {message}, escreva um arquivo Terraform para atender as demandas pedidas.",
             agent=agent,
             expected_output="""
-                O conteúdo gerado deve ser um arquivo Terraform completo e funcional.  
-                O nome do provedor cloud é **exatamente** `"mgc_virtual_machine"`, e deve ser referenciado como `provider = "mgc_virtual_machine"` no arquivo.  
-                **Não utilize qualquer outro nome para o provedor.**  
-                Certifique-se de que a configuração contenha todas as informações necessárias para o provisionamento, mantendo o equilíbrio entre otimização, escalabilidade e segurança.
-                Contenha APENAS o código Terraform, nada mais.
+                O conteúdo gerado deve ser um arquivo Terraform completo, funcional e sem comentários ou explicações em linguagem natural.  
+                Utilize **exclusivamente** código Terraform.  
+                O nome do provedor cloud é **exatamente** `"mgc_virtual_machine"` e deve ser referenciado como `provider = "mgc_virtual_machine"` no arquivo.  
+                Não utilize qualquer outro nome para o provedor.  
+                Certifique-se de incluir todas as informações necessárias para o provisionamento, mantendo o equilíbrio entre otimização, escalabilidade e segurança.  
+                Escreva **apenas o código Terraform necessário** e nada mais.
                 """,
             context=task_context
         )
