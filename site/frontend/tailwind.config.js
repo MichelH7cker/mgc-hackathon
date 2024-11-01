@@ -5,16 +5,22 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        '01': "url('/01.png')",
-        '03': "url('/03.jpg')"
+        'mg-logo': "url('/mg-logo.png')",
       },
       from: {
-        '01': "url('/01.png')",
-        '03': "url('/03.jpg')"
+        'mg-logo': "url('/mg-logo.png')",
       },
       padding: {
-        '2.5': "10.5px"
-      }
+        '2.5': "10.5px",
+      },
+      colors: {
+        'mg-purple': '#5409C2',
+        'mg-dark-blue': '#8841BD',
+      },
+      fontFamily: {
+        'poppins': ['Poppins', 'sans-serif'], 
+        'jetbrains': ['JetBrains Mono', 'monospace'] // Adiciona a família de fontes JetBrains Mono
+      },
     },
   },
   plugins: [],
