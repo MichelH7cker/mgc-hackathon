@@ -1,7 +1,7 @@
 resource "mgc_virtual_machine_instances" "nexgen-front" {
   name     = "nexgen-front"
   machine_type = {
-    name = "cloud-bs1.xsmall"
+    name = "BV2-2-40"
   }
   image = {
     name = "cloud-ubuntu-22.04 LTS"
@@ -17,7 +17,7 @@ resource "mgc_virtual_machine_instances" "nexgen-front" {
 resource "mgc_virtual_machine_instances" "nexgen-back" {
   name     = "nexgen-back"
   machine_type = {
-    name = "cloud-bs1.xsmall"
+    name = "BV2-2-40"
   }
   image = {
     name = "cloud-ubuntu-22.04 LTS"
