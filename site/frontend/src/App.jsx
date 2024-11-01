@@ -46,9 +46,9 @@ function App() {
             <div className='flex w-full h-screen bg-gradient-to-r from-mg-purple to-mg-dark-blue'>
                 <div className='w-1/2 flex flex-col items-start justify-center p-16 gap-20'>
 					<div className= "gap-10">
-						<h1 className="text-8xl font-bold mb-4 relative z-10 font-poppins text-white "> Automatização de Terraform </h1>
-						<p className="font-jetbrains text-2xl text-white mb-6 relative z-10"> 
-                            Utilizamos inteligência artifical para automatizar arquivos de configurações <em>terraform</em> e facilitar o uso da <em>MagaluCloud </em> 
+						<h1 className="text-8xl font-bold mb-4 relative z-10 font-poppins text-white "> MagaBot </h1>
+						<p className="font-jetbrains text-justify text-2xl text-white mb-6 relative z-10"> 
+                            Automatização de Terraform. Utilizamos inteligência artifical para automatizar arquivos de configurações <em>terraform</em> e facilitar o uso da <em>MagaluCloud</em>.
 						</p>
 					</div> 
                 </div>
