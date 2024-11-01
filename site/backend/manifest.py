@@ -4,6 +4,9 @@ from langchain_openai import ChatOpenAI
 import pandas as pd
 import os
 from example import TF_EXAMPLE
+from dotenv import load_dotenv
+
+load_dotenv()
 
 os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
 
@@ -157,9 +160,6 @@ class Manifest:
         return crew
 
 if __name__ == "__main__":
-    from dotenv import load_dotenv
-
-    load_dotenv()
     message = {"message": "Crie um Terraform para uma máquina virtual de 2 GB de RAM."}
 
     response = Manifest().execute(message=message)
