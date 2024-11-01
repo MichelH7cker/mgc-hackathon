@@ -1,15 +1,3 @@
-2024-11-01T02:01:19.887279-0300 ERROR | app.py | get_os | name 'terraform_content' is not defined
-2024-11-01T02:01:19.887575-0300 INFO | app.py | get_os | Requisição durou 0.00 seg.
-2024-11-01T02:01:26.819357-0300 ERROR | app.py | get_os | name 'terraform_content' is not defined
-2024-11-01T02:01:26.819746-0300 INFO | app.py | get_os | Requisição durou 0.00 seg.
-2024-11-01T02:01:59.840734-0300 ERROR | app.py | get_os | 'dict' object has no attribute 'encode'
-2024-11-01T02:01:59.840968-0300 INFO | app.py | get_os | Requisição durou 0.00 seg.
-2024-11-01T02:03:04.280603-0300 ERROR | app.py | get_os | name 'FileResponse' is not defined
-2024-11-01T02:03:04.280823-0300 INFO | app.py | get_os | Requisição durou 0.00 seg.
-2024-11-01T02:03:55.267552-0300 INFO | app.py | get_os | Requisição durou 0.00 seg.
-2024-11-01T02:04:52.458883-0300 INFO | app.py | get_os | Requisição durou 0.00 seg.
-2024-11-01T02:05:02.767045-0300 INFO | app.py | get_os | Requisição durou 0.00 seg.
-2024-11-01T02:05:03.595459-0300 INFO | app.py | get_os | Requisição durou 0.00 seg.
-2024-11-01T02:05:04.955335-0300 INFO | app.py | get_os | Requisição durou 0.00 seg.
-2024-11-01T02:05:06.069494-0300 INFO | app.py | get_os | Requisição durou 0.00 seg.
-2024-11-01T02:05:06.679505-0300 INFO | app.py | get_os | Requisição durou 0.00 seg.
+2024-11-01T03:38:19.261749-0300 INFO | app.py | get_os | Requisição durou 67.72 seg.
+2024-11-01T03:50:53.054283-0300 INFO | app.py | get_os | Requisição durou 55.46 seg.
+2024-11-01T03:53:17.698385-0300 INFO | app.py | get_os | Requisição durou 0.00 seg.
