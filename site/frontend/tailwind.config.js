@@ -6,9 +6,11 @@ export default {
     extend: {
       backgroundImage: {
         'mg-logo': "url('/mg-logo.png')",
+        'magalu': "url('/magalu.avif')",
       },
       from: {
         'mg-logo': "url('/mg-logo.png')",
+        'magalu': "url('/magalu.avif')",
       },
       padding: {
         '2.5': "10.5px",
